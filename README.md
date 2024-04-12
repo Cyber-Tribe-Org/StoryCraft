@@ -1,1 +1,1 @@
-# StoryCraft
+# Story Craft
