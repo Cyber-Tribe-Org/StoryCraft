@@ -1,27 +1,24 @@
-import { Grid, GridItem, Show } from "@chakra-ui/react";
+// import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
+import StoryWorksheet from "./components/StoryLayout/StoryWorksheet";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 
 function App() {
     return (
-        <Grid
-            templateAreas={{
-                base: `"nav"  "main"`,
-                lg: `"nav    nav" 
-                     "aside  main"`,
-            }}
-        >
-            <GridItem area="nav">
-                <NavBar />
-            </GridItem>
-            <Show above="lg">
-                <GridItem area="aside" bg="gold">
-                    Aside
-                </GridItem>
-            </Show>
-            <GridItem area="main" bg="dodgerblue">
-                Main
-            </GridItem>
-        </Grid>
+        <Container fluid className="custom-container">
+            <Row noGutters>
+                <Col>
+                    <NavBar />
+                </Col>
+            </Row>
+            <Row noGutters className="custom-row">
+                <StoryWorksheet />
+            </Row>
+        </Container>
     );
 }
 

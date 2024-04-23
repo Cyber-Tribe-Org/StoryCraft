@@ -1,0 +1,44 @@
+.circle-image {
+    width: 100px; /* Adjust the width of the circle */
+    height: 100px; /* Adjust the height of the circle */
+    border-radius: 50%; /* Make it a circle */
+    border-color: white;
+    border-width: 2px;
+    overflow: hidden; /* Ensure the image stays within the circle */
+    margin: 0 auto; /* Center the circle */
+}
+
+.title-plot-point {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    color: white;
+    font-size: 25px;
+}
+
+.landmark-text {
+    text-align: left;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    display: block;
+    font-size: 12px;
+    color: white;
+}
+
+.number-plot-point {
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    display: block;
+    font-size: 25px;
+    color: white;
+}
+
+.text-field {
+    border-color: darkgray;
+    resize: none;
+    height: 100px;
+    padding: 0;
+    margin: 0 0;
+}

@@ -1,0 +1,21 @@
+.act-column {
+    background-color: black;
+    height: 50px;
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    font-size: 20px; /* Adjust the font size as needed */
+    color: white; /* Set the desired color */
+}
+
+.sequence-header {
+    background-color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: black;
+    margin: 0 5px;
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    vertical-align: middle;
+}
