@@ -15,9 +15,11 @@ const PlotPoint = () => {
                         <h2 className="number-plot-point">10</h2>
                         <p className="landmark-text ms-auto">LENDMARK 1</p>
                     </Stack>
-                    <div className="circle-image">
-                        <Card.Img src={plotPointIcon} />
-                    </div>
+                    <img
+                        src={plotPointIcon}
+                        className="circle-image"
+                        alt="Thematic image"
+                    ></img>
                     <h5 className="title-plot-point">Card Title</h5>
                 </Stack>
             </Card.Header>

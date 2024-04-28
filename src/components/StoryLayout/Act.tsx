@@ -7,14 +7,14 @@ import "./Act.css";
 const Act = () => {
     return (
         <Container>
-            <Row noGutters>
+            <Row>
                 <Col className="p-2 d-flex justify-content-center align-items-center act-column">
                     ACT
                 </Col>
             </Row>
             <Row>
                 <Col className="p-1 m-1">
-                    <Row noGutters>
+                    <Row>
                         <Col xs={6} className="p-0 m-0">
                             <div className="d-flex justify-content-center sequence-header">
                                 <div className="p-1">Sequence</div>
