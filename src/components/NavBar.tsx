@@ -53,20 +53,18 @@ function NavBar() {
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                         <Nav className="justify-content-end flex-grow-1 pe-3">
-                            <NavLink
-                                to="about"
-                                onClick={() => setOffcanvas(false)}
-                            >
-                                About
+                            <NavLink to="/" onClick={() => setOffcanvas(false)}>
+                                Home
                             </NavLink>
-                            <NavLink
-                                to="story"
-                                onClick={() => setOffcanvas(false)}
-                            >
-                                Story Worksheet
-                            </NavLink>
+
                             {userEmail ? (
                                 <>
+                                    <NavLink
+                                        to="story"
+                                        onClick={() => setOffcanvas(false)}
+                                    >
+                                        Story Worksheet
+                                    </NavLink>
                                     <NavLink
                                         to="profile"
                                         onClick={() => setOffcanvas(false)}

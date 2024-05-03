@@ -1,7 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
-import WorksheetInfo from "./StoryInfo/WorksheetInfo";
-import StoryWorksheet from "./StoryLayout/StoryWorksheet";
-import CharacterArc from "./CharacterArc/CharacterArc";
+import WorksheetInfo from "../components/StoryInfo/WorksheetInfo";
+import StoryWorksheet from "../components/StoryLayout/StoryWorksheet";
+import CharacterArc from "../components/CharacterArc/CharacterArc";
 
 const Story = () => {
     return (
