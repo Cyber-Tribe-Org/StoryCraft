@@ -2,8 +2,11 @@ import { Container, Row, Col } from "react-bootstrap";
 import WorksheetInfo from "../components/StoryInfo/WorksheetInfo";
 import StoryWorksheet from "../components/StoryLayout/StoryWorksheet";
 import CharacterArc from "../components/CharacterArc/CharacterArc";
+import useEmailVerification from "../hooks/useEmailVerification";
 
 const Story = () => {
+    useEmailVerification();
+
     return (
         <Container>
             <Row>
