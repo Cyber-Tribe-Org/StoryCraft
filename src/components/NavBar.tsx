@@ -1,19 +1,16 @@
 // Images
 import logo from "../assets/logo.png";
 
-// React-Bootstrap components
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Offcanvas from "react-bootstrap/Offcanvas";
-
-// React Router
 import { NavLink, useNavigate } from "react-router-dom";
+import { auth } from "../config/firebase";
+import { signOut } from "firebase/auth";
 
 // Hooks
 import { useState, useRef } from "react";
-
-// Custom hooks
 import useAuth from "../hooks/useAuth";
 
 function NavBar() {
@@ -22,10 +19,15 @@ function NavBar() {
     const [showOffcanvas, setOffcanvas] = useState(false);
     const offcanvasRef = useRef(null);
 
-    const handleLogout = () => {
-        // Logic to handle logout
-        setOffcanvas(false);
-        navigate("/");
+    const handleLogout = async () => {
+        await signOut(auth)
+            .then(() => {
+                setOffcanvas(false);
+                navigate("/");
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
     };
 
     return (

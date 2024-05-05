@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Button, Container, Row, Col, Stack } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth, googleProvider } from "../config/firebase";
+import useEmailVerification from "../hooks/useEmailVerification";
+import { toast } from "react-toastify";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -8,23 +12,35 @@ const Login = () => {
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
-    const handleLoginWithEmail = async (e: React.FormEvent) => {
-        e.preventDefault();
-        try {
-            // await auth.signInWithEmailAndPassword(email, password);
-            navigate("/");
-        } catch (error) {
-            // setError(error.message);
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            if (user) navigate("/");
+        });
+    }, []);
+
+    const redirect = () => {
+        const isVerified = useEmailVerification();
+        if (isVerified) {
+            navigate("/story");
         }
     };
 
+    const error_handling = (err: Error) => {
+        toast.error("Error while login. Please check your email and password.");
+        console.error(err.message);
+    };
+
+    const handleLoginWithEmail = async (e: React.FormEvent) => {
+        e.preventDefault();
+        await signInWithEmailAndPassword(auth, email, password)
+            .then(() => redirect)
+            .catch((error) => error_handling(error));
+    };
+
     const handleLoginWithGoogle = async () => {
-        try {
-            // await auth.signInWithPopup(googleProvider);
-            navigate("/");
-        } catch (error) {
-            // setError(error.message);
-        }
+        await signInWithPopup(auth, googleProvider)
+            .then(() => redirect)
+            .catch((error) => error_handling);
     };
 
     const handleSignUp = () => {
@@ -37,8 +53,7 @@ const Login = () => {
                 <Col md={6}>
                     <h2>Login</h2>
                     <Form onSubmit={handleLoginWithEmail}>
-                        <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Email address</Form.Label>
+                        <Form.Group controlId="formBasicEmail" className="mt-3">
                             <Form.Control
                                 type="email"
                                 placeholder="Enter email"
@@ -47,8 +62,10 @@ const Login = () => {
                             />
                         </Form.Group>
 
-                        <Form.Group controlId="formBasicPassword">
-                            <Form.Label>Password</Form.Label>
+                        <Form.Group
+                            controlId="formBasicPassword"
+                            className="mt-3"
+                        >
                             <Form.Control
                                 type="password"
                                 placeholder="Password"
@@ -56,7 +73,12 @@ const Login = () => {
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </Form.Group>
-
+                        <a
+                            className="mt-3 hover-pointer"
+                            onClick={handleSignUp}
+                        >
+                            I don't have an account
+                        </a>
                         <Stack
                             direction="horizontal"
                             className="d-flex justify-content-between mt-3"
@@ -74,13 +96,6 @@ const Login = () => {
                     </Form>
 
                     {error && <p className="mt-3 text-danger">{error}</p>}
-
-                    <div className="mt-3">
-                        <p>Don't have an account?</p>
-                        <Button variant="secondary" onClick={handleSignUp}>
-                            Sign Up
-                        </Button>
-                    </div>
                 </Col>
             </Row>
         </Container>
