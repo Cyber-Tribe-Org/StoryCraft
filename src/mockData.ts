@@ -28,7 +28,7 @@ export const plot_point_data = [
     },
     {
         id: 2,
-        name: "Protogonist",
+        name: "Protagonist",
         header: "",
         order: 2,
         number: 2,
@@ -46,7 +46,7 @@ export const plot_point_data = [
     },
     {
         id: 4,
-        name: "stakes",
+        name: "Stakes",
         header: "",
         order: 1,
         number: 4,
@@ -55,7 +55,7 @@ export const plot_point_data = [
     },
     {
         id: 5,
-        name: "Deliveration",
+        name: "Deliberation",
         header: "",
         order: 2,
         number: 5,

@@ -1,0 +1,223 @@
+.circle-center {
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    border-radius: 50%;
+    font-size: 12px;
+    color: #000000;
+    text-align: center;
+    background: none; /* Remove background color */
+    border: 2px solid black; /* Add black border */
+    position: relative;
+    top: 400px; /* Adjust the starting Y coordinate */
+    left: calc(50% - 75px); /* Adjust the starting X coordinate */
+}
+
+.circle-1 {
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    border-radius: 50%;
+    font-size: 12px;
+    color: #000000;
+    text-align: center;
+    background: none; /* Remove background color */
+    border: 2px solid black; /* Add black border */
+    position: relative;
+    top: 350px; /* Adjust the starting Y coordinate */
+    left: calc(10% - 60px); /* Adjust the starting X coordinate */
+}
+
+.circle-2 {
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+    border-radius: 50%;
+    font-size: 8px;
+    color: #000000;
+    text-align: center;
+    background: none; /* Remove background color */
+    border: 2px solid black; /* Add black border */
+    position: relative;
+    top: 120px; /* Adjust the starting Y coordinate */
+    left: calc(14% - 45px); /* Adjust the starting X coordinate */
+}
+
+.circle-3 {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    border-radius: 50%;
+    font-size: 8px;
+    color: #000000;
+    text-align: center;
+    background: none; /* Remove background color */
+    border: 2px solid black; /* Add black border */
+    position: relative;
+    top: -50px; /* Adjust the starting Y coordinate */
+    left: calc(20% - 35px); /* Adjust the starting X coordinate */
+}
+
+.circle-4 {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    border-radius: 50%;
+    font-size: 8px;
+    color: #000000;
+    text-align: center;
+    background: none; /* Remove background color */
+    border: 2px solid black; /* Add black border */
+    position: relative;
+    top: -180px; /* Adjust the starting Y coordinate */
+    left: calc(26% - 35px); /* Adjust the starting X coordinate */
+}
+
+.circle-5 {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    border-radius: 50%;
+    font-size: 8px;
+    color: #000000;
+    text-align: center;
+    background: none; /* Remove background color */
+    border: 2px solid black; /* Add black border */
+    position: relative;
+    top: -300px; /* Adjust the starting Y coordinate */
+    left: calc(34% - 35px); /* Adjust the starting X coordinate */
+}
+
+.circle-6 {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    border-radius: 50%;
+    font-size: 8px;
+    color: #000000;
+    text-align: center;
+    background: none; /* Remove background color */
+    border: 2px solid black; /* Add black border */
+    position: relative;
+    top: -400px; /* Adjust the starting Y coordinate */
+    left: calc(41% - 35px); /* Adjust the starting X coordinate */
+}
+
+.circle-7 {
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+    border-radius: 50%;
+    font-size: 8px;
+    color: #000000;
+    text-align: center;
+    background: none; /* Remove background color */
+    border: 2px solid black; /* Add black border */
+    position: relative;
+    top: -500px; /* Adjust the starting Y coordinate */
+    left: calc(50% - 45px); /* Adjust the starting X coordinate */
+}
+
+.circle-8 {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    border-radius: 50%;
+    font-size: 8px;
+    color: #000000;
+    text-align: center;
+    background: none; /* Remove background color */
+    border: 2px solid black; /* Add black border */
+    position: relative;
+    top: -560px; /* Adjust the starting Y coordinate */
+    left: calc(59% - 35px); /* Adjust the starting X coordinate */
+}
+
+.circle-9 {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    border-radius: 50%;
+    font-size: 8px;
+    color: #000000;
+    text-align: center;
+    background: none; /* Remove background color */
+    border: 2px solid black; /* Add black border */
+    position: relative;
+    top: -600px; /* Adjust the starting Y coordinate */
+    left: calc(66% - 35px); /* Adjust the starting X coordinate */
+}
+
+.circle-10 {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    border-radius: 50%;
+    font-size: 8px;
+    color: #000000;
+    text-align: center;
+    background: none; /* Remove background color */
+    border: 2px solid black; /* Add black border */
+    position: relative;
+    top: -620px; /* Adjust the starting Y coordinate */
+    left: calc(74% - 35px); /* Adjust the starting X coordinate */
+}
+
+.circle-11 {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    border-radius: 50%;
+    font-size: 8px;
+    color: #000000;
+    text-align: center;
+    background: none; /* Remove background color */
+    border: 2px solid black; /* Add black border */
+    position: relative;
+    top: -630px; /* Adjust the starting Y coordinate */
+    left: calc(80% - 35px); /* Adjust the starting X coordinate */
+}
+
+.circle-12 {
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+    border-radius: 50%;
+    font-size: 8px;
+    color: #000000;
+    text-align: center;
+    background: none; /* Remove background color */
+    border: 2px solid black; /* Add black border */
+    position: relative;
+    top: -620px; /* Adjust the starting Y coordinate */
+    left: calc(86% - 45px); /* Adjust the starting X coordinate */
+}
+
+.circle-13 {
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    border-radius: 50%;
+    font-size: 8px;
+    color: #000000;
+    text-align: center;
+    background: none; /* Remove background color */
+    border: 2px solid black; /* Add black border */
+    position: relative;
+    top: -600px; /* Adjust the starting Y coordinate */
+    left: calc(90% - 60px); /* Adjust the starting X coordinate */
+}
+
+text {
+    font-size: 24px; /* Adjust the font size as needed */
+    fill: black; /* Set the color of the text */
+    text-anchor: start; /* Align text to start */
+}
+
+circle {
+    visibility: hidden; /* Make the circle invisible */
+}
+
+.rotate-90 {
+    transform: rotate(90deg);
+}
