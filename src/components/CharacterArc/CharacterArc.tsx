@@ -9,11 +9,8 @@ const CharacterArc = () => {
         const handleResize = () => {
             if (window.innerWidth < 800) {
                 setIsRotated(true);
-                console.log(isRotated);
             } else {
                 setIsRotated(false);
-                console.log(window.innerWidth);
-                console.log(isRotated);
             }
         };
 

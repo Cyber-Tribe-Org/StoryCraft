@@ -26,7 +26,7 @@ function NavBar() {
                 navigate("/");
             })
             .catch((error) => {
-                console.log(error.message);
+                console.error(error);
             });
     };
 

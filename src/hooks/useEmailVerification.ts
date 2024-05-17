@@ -8,10 +8,7 @@ const useEmailVerification = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log("In the hook 1111");
         const unsubscribe = auth.onAuthStateChanged((user) => {
-            console.log("In the hook");
-            console.log(user);
             if (user) {
                 setIsEmailVerified(user?.emailVerified);
                 if (!user.emailVerified) {
