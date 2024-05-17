@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {
     createUserWithEmailAndPassword,
     sendEmailVerification,
+    updateProfile,
 } from "firebase/auth";
 import { toast } from "react-toastify";
 import { auth } from "../config/firebase";
@@ -12,8 +13,7 @@ const Signup = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
+    const [userName, setUserName] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
@@ -29,6 +29,12 @@ const Signup = () => {
             .then(async (userCred) => {
                 const user = userCred.user;
                 await sendEmailVerification(user);
+
+                // Set displayName
+                await updateProfile(user, {
+                    displayName: userName,
+                });
+
                 navigate("/story");
             })
             .catch((error) => {
@@ -83,23 +89,13 @@ const Signup = () => {
                             />
                         </Form.Group>
 
-                        <Form.Group controlId="formBasicFirstName">
-                            <Form.Label>First Name</Form.Label>
+                        <Form.Group controlId="formBasicUserName">
+                            <Form.Label>Name</Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder="Enter First Name"
-                                value={firstName}
-                                onChange={(e) => setFirstName(e.target.value)}
-                            />
-                        </Form.Group>
-
-                        <Form.Group controlId="formBasicLastName">
-                            <Form.Label>Last Name</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter Last Name"
-                                value={lastName}
-                                onChange={(e) => setLastName(e.target.value)}
+                                placeholder="Enter Name"
+                                value={userName}
+                                onChange={(e) => setUserName(e.target.value)}
                             />
                         </Form.Group>
 
