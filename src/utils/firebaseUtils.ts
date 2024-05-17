@@ -1,8 +1,6 @@
 import { db } from "../config/firebase";
 
 import {
-    DocumentReference,
-    CollectionReference,
     DocumentData,
     collection,
     addDoc,
@@ -10,7 +8,6 @@ import {
     getDocs,
     query,
     where,
-    connectFirestoreEmulator,
 } from "firebase/firestore";
 
 const cloneProjectDocumentIfNeeded = async (

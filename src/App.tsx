@@ -2,10 +2,9 @@ import { useEffect } from "react";
 import useAuth from "./hooks/useAuth";
 import router from "./routing/routes";
 import { cloneProjectDocumentIfNeeded } from "./utils/firebaseUtils.ts";
-// import "./utils/firebaseUtils.ts";
 import { auth } from "./config/firebase";
 import { RouterProvider } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
