@@ -13,7 +13,7 @@ const queryClient = new QueryClient({
             staleTime: 86_400_000,
             refetchOnWindowFocus: false,
             refetchOnReconnect: true,
-            refetchOnMount: true,
+            refetchOnMount: true, // Resources will be fetched when the component mounts for a first time
         },
     },
 });

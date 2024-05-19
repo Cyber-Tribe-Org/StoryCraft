@@ -1,8 +1,8 @@
 import { useEffect } from "react";
+import { auth } from "./config/firebase";
 import useAuth from "./hooks/useAuth";
 import router from "./routing/routes";
 import { cloneProjectDocumentIfNeeded } from "./utils/firebaseUtils.ts";
-import { auth } from "./config/firebase";
 import { RouterProvider } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,9 +15,7 @@ function App() {
         const cloneProjectDocument = async () => {
             try {
                 if (isAuthenticated && isVerified && userEmail) {
-                    const name = auth.currentUser?.displayName
-                        ? auth.currentUser?.displayName
-                        : null;
+                    const name = auth.currentUser?.displayName || null;
 
                     const result = await cloneProjectDocumentIfNeeded(
                         userEmail,
@@ -31,7 +29,7 @@ function App() {
 
         cloneProjectDocument();
     }, [userEmail, isAuthenticated, isVerified]);
-
+    console.log("Loading the main app");
     return (
         <>
             <ToastContainer pauseOnFocusLoss={false} />
