@@ -73,9 +73,9 @@ function NavBar() {
                                     >
                                         Profile
                                     </NavLink>
-                                    <Nav.Link onClick={handleLogout}>
+                                    <NavLink to="/" onClick={handleLogout}>
                                         Logout
-                                    </Nav.Link>
+                                    </NavLink>
                                 </>
                             ) : (
                                 <NavLink

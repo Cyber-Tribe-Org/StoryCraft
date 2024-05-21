@@ -3,27 +3,18 @@ import { UserContext } from "../App";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useFirestoreQuery } from "@react-query-firebase/firestore";
-import {
-    getDocs,
-    query,
-    collection,
-    limit,
-    QuerySnapshot,
-    DocumentData,
-    where,
-} from "firebase/firestore";
+import { getDocs, query, collection, where } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { Container, Row, Col } from "react-bootstrap";
 import WorksheetInfo from "../components/StoryInfo/WorksheetInfo";
 import StoryWorksheet from "../components/StoryLayout/StoryWorksheet";
 import CharacterArc from "../components/CharacterArc/CharacterArc";
-import useEmailVerification from "../hooks/useEmailVerification";
 
 const Story = () => {
     const { userEmail, isVerified } = useContext(UserContext);
     const [storyboardData, setStoryboardData] = useState({});
 
-    console.log("Loading  Story ....");
+    console.log("Loading  Story ....", userEmail);
     const refUserProject = query(
         collection(db, "projects"),
         where("email", "==", userEmail)
@@ -46,6 +37,7 @@ const Story = () => {
                 queryProjectResult &&
                 queryProjectResult.docs.length > 0
             ) {
+                console.log("Data Ready !");
                 const projectId = queryProjectResult.docs[0].id;
                 const worksheetQuery = query(
                     collection(db, `projects/${projectId}/worksheets`)
@@ -65,15 +57,11 @@ const Story = () => {
                         setStoryboardData(storyboardData);
                     }
                 }
-                // console.log(
-                //     "Data fetched successfully:",
-                //     queryProjectResult?.docs[0].data()
-                // );
             }
         };
 
         fetchData();
-    }, [userEmail]);
+    }, [userEmail, isLoading]);
 
     return (
         <Container>
