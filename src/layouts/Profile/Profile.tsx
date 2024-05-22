@@ -20,6 +20,7 @@ import woman_pic_2 from "../../assets/avatars/woman_blond.png";
 import woman_pic_3 from "../../assets/avatars/woman_brunette.png";
 import woman_pic_4 from "../../assets/avatars/woman_india.png";
 import woman_pic_5 from "../../assets/avatars/woman_with_braids.png";
+import "./Profile.css";
 
 interface ProfileState {
     name: string;
@@ -100,8 +101,7 @@ const Profile: React.FC = () => {
                     <Image
                         src={profile.picture}
                         alt="Profile"
-                        className="img-thumbnail"
-                        width="150"
+                        className="img-thumbnail profile-picture"
                     />
                     <FaPencilAlt
                         className="position-absolute bottom-0 end-0"
@@ -132,7 +132,7 @@ const Profile: React.FC = () => {
                             <Form.Control
                                 type="number"
                                 name="age"
-                                value={profile.age ? profile.age : ""}
+                                value={profile.age ? profile.age : null}
                                 onChange={handleChange}
                             />
                         </Form.Group>
@@ -198,6 +198,7 @@ const Profile: React.FC = () => {
                                             onClick={() =>
                                                 handlePictureChange(pic)
                                             }
+                                            className="modal-image"
                                             style={{ cursor: "pointer" }}
                                         />
                                     </Col>
@@ -213,6 +214,7 @@ const Profile: React.FC = () => {
                                             onClick={() =>
                                                 handlePictureChange(pic)
                                             }
+                                            className="modal-image"
                                             style={{ cursor: "pointer" }}
                                         />
                                     </Col>
