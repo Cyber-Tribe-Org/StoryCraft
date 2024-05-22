@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "react-query";
 import App from "./App";
 import "./index.css";
 
@@ -12,7 +12,7 @@ const queryClient = new QueryClient({
             staleTime: 86_400_000,
             refetchOnWindowFocus: false,
             refetchOnReconnect: true,
-            refetchOnMount: true,
+            refetchOnMount: true, // Resources will be fetched when the component mounts for a first time
         },
     },
 });

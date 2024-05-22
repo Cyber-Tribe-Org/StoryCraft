@@ -3,7 +3,6 @@ import { Form, Button, Container, Row, Col, Stack } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../config/firebase";
-import useEmailVerification from "../hooks/useEmailVerification";
 import { toast } from "react-toastify";
 
 const Login = () => {
@@ -19,10 +18,7 @@ const Login = () => {
     }, []);
 
     const redirect = () => {
-        const isVerified = useEmailVerification();
-        if (isVerified) {
-            navigate("/story");
-        }
+        navigate("/story");
     };
 
     const error_handling = (err: Error) => {
