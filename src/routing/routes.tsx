@@ -3,7 +3,7 @@ import Story from "../layouts/Story";
 import Login from "../layouts/Login";
 import Signup from "../layouts/Signup";
 import Home from "../layouts/Home";
-import Profile from "../layouts/Profile";
+import Profile from "../layouts/Profile/Profile";
 import RootLayout from "./PublicRoutes";
 import PrivateRoutes from "./PrivateRoutes";
 

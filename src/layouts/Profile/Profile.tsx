@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent, useContext, useEffect } from "react";
-import { UserContext } from "../App";
+import { UserContext } from "../../App";
 import {
     Form,
     Button,
@@ -10,20 +10,20 @@ import {
     Image,
 } from "react-bootstrap";
 import { FaPencilAlt } from "react-icons/fa";
-import man_pic_1 from "../assets/avatars/man_black_hair.png";
-import man_pic_2 from "../assets/avatars/man_blond_blue_eyes.png";
-import man_pic_3 from "../assets/avatars/man_crazy_professor.png";
-import man_pic_4 from "../assets/avatars/man_mid_age.png";
-import man_pic_5 from "../assets/avatars/man_with_beard.png";
-import woman_pic_1 from "../assets/avatars/woman_black_hair.png";
-import woman_pic_2 from "../assets/avatars/woman_blond.png";
-import woman_pic_3 from "../assets/avatars/woman_brunette.png";
-import woman_pic_4 from "../assets/avatars/woman_india.png";
-import woman_pic_5 from "../assets/avatars/woman_with_braids.png";
+import man_pic_1 from "../../assets/avatars/man_black_hair.png";
+import man_pic_2 from "../../assets/avatars/man_blond_blue_eyes.png";
+import man_pic_3 from "../../assets/avatars/man_crazy_professor.png";
+import man_pic_4 from "../../assets/avatars/man_mid_age.png";
+import man_pic_5 from "../../assets/avatars/man_with_beard.png";
+import woman_pic_1 from "../../assets/avatars/woman_black_hair.png";
+import woman_pic_2 from "../../assets/avatars/woman_blond.png";
+import woman_pic_3 from "../../assets/avatars/woman_brunette.png";
+import woman_pic_4 from "../../assets/avatars/woman_india.png";
+import woman_pic_5 from "../../assets/avatars/woman_with_braids.png";
 
 interface ProfileState {
     name: string;
-    age: string;
+    age: number | null;
     gender: string;
     profession: string;
     country: string;
@@ -52,7 +52,7 @@ const Profile: React.FC = () => {
 
     const [profile, setProfile] = useState<ProfileState>({
         name: "",
-        age: "",
+        age: null,
         gender: "",
         profession: "",
         country: "",
@@ -63,7 +63,7 @@ const Profile: React.FC = () => {
     useEffect(() => {
         setProfile((prevProfile) => ({
             ...prevProfile,
-            picture: prevProfile.gender === "Male" ? man_pic_1 : woman_pic_1,
+            picture: prevProfile.gender === "Female" ? woman_pic_1 : man_pic_1,
         }));
     }, [profile.gender]);
 
@@ -132,7 +132,7 @@ const Profile: React.FC = () => {
                             <Form.Control
                                 type="number"
                                 name="age"
-                                value={profile.age}
+                                value={profile.age ? profile.age : ""}
                                 onChange={handleChange}
                             />
                         </Form.Group>
