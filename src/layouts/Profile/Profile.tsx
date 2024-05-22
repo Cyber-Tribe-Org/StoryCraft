@@ -74,7 +74,11 @@ const Profile: React.FC = () => {
         >
     ) => {
         const { name, value } = e.target;
-        setProfile((prevProfile) => ({ ...prevProfile, [name]: value }));
+        setProfile((prevProfile) => ({
+            ...prevProfile,
+            [name]:
+                name === "age" ? (value === "" ? null : Number(value)) : value,
+        }));
     };
 
     const handleSave = () => {
@@ -101,7 +105,7 @@ const Profile: React.FC = () => {
                     <Image
                         src={profile.picture}
                         alt="Profile"
-                        className="img-thumbnail profile-picture"
+                        className="profile-picture"
                     />
                     <FaPencilAlt
                         className="position-absolute bottom-0 end-0"
@@ -132,7 +136,7 @@ const Profile: React.FC = () => {
                             <Form.Control
                                 type="number"
                                 name="age"
-                                value={profile.age ? profile.age : null}
+                                value={profile.age ? profile.age : ""}
                                 onChange={handleChange}
                             />
                         </Form.Group>
@@ -191,7 +195,7 @@ const Profile: React.FC = () => {
                         {profile.gender === "Female" ? (
                             <>
                                 {womanPicOptions.map((pic) => (
-                                    <Col xs={4}>
+                                    <Col xs={4} key={pic}>
                                         <Image
                                             src={pic}
                                             thumbnail
@@ -207,7 +211,7 @@ const Profile: React.FC = () => {
                         ) : (
                             <>
                                 {manPicOptions.map((pic) => (
-                                    <Col xs={4}>
+                                    <Col xs={4} key={pic}>
                                         <Image
                                             src={pic}
                                             thumbnail
