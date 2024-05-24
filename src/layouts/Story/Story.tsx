@@ -1,14 +1,14 @@
 import React, { useEffect, useContext, useState } from "react";
-import { UserContext } from "../App";
+import { UserContext } from "../../App";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useFirestoreQuery } from "@react-query-firebase/firestore";
 import { getDocs, query, collection, where } from "firebase/firestore";
-import { db } from "../config/firebase";
+import { db } from "../../config/firebase";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import WorksheetInfo from "../components/StoryInfo/WorksheetInfo";
-import StoryWorksheet from "../components/StoryLayout/StoryWorksheet";
-import CharacterArc from "../components/CharacterArc/CharacterArc";
+import WorksheetInfo from "../../components/StoryInfo/WorksheetInfo";
+import StoryWorksheet from "../../components/StoryLayout/StoryWorksheet";
+import CharacterArc from "../../components/CharacterArc/CharacterArc";
 import "./Story.css"; // Assuming you have a CSS file for custom styles
 
 const Story = () => {
