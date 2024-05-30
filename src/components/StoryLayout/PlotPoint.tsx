@@ -4,23 +4,24 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Stack from "react-bootstrap/Stack";
 import plotPointIcon from "../../assets/plotPointIcon.png";
+import { PlotPointProps } from "../../entities/StoryboardInterfaces";
 import "./PlotPoint.css"; // Import CSS file for custom styles
 
-const PlotPoint = () => {
+const PlotPoint = ({ text, name, order, header, number }: PlotPointProps) => {
     return (
         <Card>
             <Card.Header style={{ background: "black" }}>
                 <Stack className="align-items-center justify-content-center">
                     <Stack direction="horizontal" gap={2}>
-                        <h2 className="number-plot-point">10</h2>
-                        <p className="landmark-text ms-auto">LENDMARK 1</p>
+                        <h2 className="number-plot-point">{number}</h2>
+                        <p className="landmark-text ms-auto">{header}</p>
                     </Stack>
                     <img
                         src={plotPointIcon}
                         className="circle-image"
                         alt="Thematic image"
                     ></img>
-                    <h5 className="title-plot-point">Card Title</h5>
+                    <h5 className="title-plot-point">{name}</h5>
                 </Stack>
             </Card.Header>
             <Card.Body>
@@ -28,6 +29,7 @@ const PlotPoint = () => {
                     <InputGroup>
                         <Form.Control
                             as="textarea"
+                            value={text}
                             aria-label="With textarea"
                             className="text-field"
                         />

@@ -1,22 +1,33 @@
 import React, { useEffect, useContext, useState } from "react";
 import { UserContext } from "../../App";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 import { useFirestoreQuery } from "@react-query-firebase/firestore";
 import { getDocs, query, collection, where } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import WorksheetInfo from "../../components/StoryInfo/WorksheetInfo";
+import StoryboardInfo from "../../components/StoryInfo/StoryboardInfo";
+import { StoryboardData } from "../../entities/StoryboardInterfaces";
 import StoryWorksheet from "../../components/StoryLayout/StoryWorksheet";
 import CharacterArc from "../../components/CharacterArc/CharacterArc";
 import "./Story.css"; // Assuming you have a CSS file for custom styles
 
 const Story = () => {
-    const { userEmail, isVerified } = useContext(UserContext);
-    const [storyboardData, setStoryboardData] = useState({});
+    const { userEmail } = useContext(UserContext);
     const [hasChanges, setHasChanges] = useState(false);
+    const [storyboardData, setStoryboardData] = useState<StoryboardData>({
+        AchillesHeel: "",
+        consciousDesire: "",
+        dramaticQuestion: "",
+        logline: "",
+        moralImperative: "",
+        moralSphere: "",
+        protagonist: "",
+        theme: "",
+        title: "",
+        unconsciousDrive: "",
+        ACTS: [],
+    });
 
-    console.log("Loading Story ....", userEmail);
     const refUserProject = query(
         collection(db, "projects"),
         where("email", "==", userEmail)
@@ -39,7 +50,6 @@ const Story = () => {
                 queryProjectResult &&
                 queryProjectResult.docs.length > 0
             ) {
-                console.log("Data Ready !");
                 const projectId = queryProjectResult.docs[0].id;
                 const worksheetQuery = query(
                     collection(db, `projects/${projectId}/worksheets`)
@@ -54,9 +64,25 @@ const Story = () => {
                     const storyboardSnapshot = await getDocs(storyboardQuery);
                     if (!storyboardSnapshot.empty) {
                         const storyboardDoc = storyboardSnapshot.docs[0];
-                        const storyboardData = storyboardDoc.data();
-                        console.log("Storyboard Data:", storyboardData);
-                        setStoryboardData(storyboardData);
+                        const data = storyboardDoc.data();
+
+                        // Extract and set the relevant parts of the data
+                        const infoData: StoryboardData = {
+                            AchillesHeel: data.AchillesHeel,
+                            consciousDesire: data.consciousDesire,
+                            dramaticQuestion: data.dramaticQuestion,
+                            logline: data.logline,
+                            moralImperative: data.moralImperative,
+                            moralSphere: data.moralSphere,
+                            protagonist: data.protagonist,
+                            theme: data.theme,
+                            title: data.title,
+                            unconsciousDrive: data.unconsciousDrive,
+                            ACTS: data.ACTS,
+                        };
+
+                        setStoryboardData(infoData);
+                        setHasChanges(false);
                     }
                 }
             }
@@ -77,6 +103,8 @@ const Story = () => {
         setHasChanges(false);
     };
 
+    if (isLoading) return <div>Loading ...</div>;
+
     return (
         <Container>
             {hasChanges && (
@@ -94,12 +122,12 @@ const Story = () => {
             )}
             <Row>
                 <Col>
-                    <WorksheetInfo />
+                    <StoryboardInfo data={storyboardData} />
                 </Col>
             </Row>
             <Row>
                 <Col>
-                    <StoryWorksheet />
+                    <StoryWorksheet data={storyboardData} />
                 </Col>
             </Row>
             <Row>

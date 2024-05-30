@@ -3,55 +3,56 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import PlotPoint from "./PlotPoint";
 import "./Act.css";
+import { Act } from "../../entities/StoryboardInterfaces";
 
-const Act = () => {
+interface ActProps {
+    act: Act;
+}
+
+const ActComponent = ({ act }: ActProps) => {
+    console.log("ACT:", act);
     return (
         <Container>
-            <Row>
-                <Col className="p-2 d-flex justify-content-center align-items-center act-column">
-                    ACT
-                </Col>
-            </Row>
-            <Row>
-                <Col className="p-1 m-1">
+            {Object.keys(act).map((actName, index) => (
+                <div key={actName}>
                     <Row>
-                        <Col xs={6} className="p-0 m-0">
-                            <div className="d-flex justify-content-center sequence-header">
-                                <div className="p-1">Sequence</div>
-                            </div>
-                            <div className="d-flex flex-column">
-                                <div className="p-1">
-                                    <PlotPoint />
-                                </div>
-                                <div className="p-1">
-                                    <PlotPoint />
-                                </div>
-                                <div className="p-1">
-                                    <PlotPoint />
-                                </div>
-                            </div>
-                        </Col>
-                        <Col xs={6} className="p-0 m-0">
-                            <div className="d-flex justify-content-center sequence-header">
-                                <div className="p-1">Sequence</div>
-                            </div>
-                            <div className="d-flex flex-column">
-                                <div className="p-1">
-                                    <PlotPoint />
-                                </div>
-                                <div className="p-1">
-                                    <PlotPoint />
-                                </div>
-                                <div className="p-1">
-                                    <PlotPoint />
-                                </div>
-                            </div>
+                        <Col className="p-2 d-flex justify-content-center align-items-center act-column">
+                            {actName}
                         </Col>
                     </Row>
-                </Col>
-            </Row>
+                    <Row key={`${actName}_${index}`}>
+                        <Col className="p-1 m-1">
+                            <Row>
+                                {["Sequence 1", "Sequence 2"].map(
+                                    (sequenceName) => (
+                                        <Col xs={6} className="p-0 m-0">
+                                            <div className="d-flex justify-content-center sequence-header">
+                                                <div className="p-1">
+                                                    {sequenceName}
+                                                </div>
+                                            </div>
+                                            <div className="d-flex flex-column">
+                                                {act[actName][
+                                                    sequenceName
+                                                ]?.map((item) => (
+                                                    <div
+                                                        className="p-1"
+                                                        key={item.number}
+                                                    >
+                                                        <PlotPoint {...item} />
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </Col>
+                                    )
+                                )}
+                            </Row>
+                        </Col>
+                    </Row>
+                </div>
+            ))}
         </Container>
     );
 };
 
-export default Act;
+export default ActComponent;
